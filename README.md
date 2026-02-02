@@ -19,3 +19,7 @@
 ## Notes
 - If your token is not stored in localStorage, adjust `TOKEN_STORAGE` and `TOKEN_STORAGE_KEY` in `.env`.
 - If your system relies on cookies instead of a Bearer token, you can switch API context creation to use `storage_state`.
+- codegen
+```
+playwright codegen --ignore-https-errors https://127.0.0.1/#/login
+```

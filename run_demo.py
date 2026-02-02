@@ -8,6 +8,7 @@ from src.api.mx_api import MxApi
 from src.utils.files import save_bytes
 from pathlib import Path
 
+
 def main():
     load_dotenv(override=False)
     settings = Settings()
@@ -25,7 +26,9 @@ def main():
         network.wait_loaded()
         network.dismiss_login_notification_if_any()
 
-        token = get_token_from_storage(page, settings.token_storage, settings.token_storage_key)
+        token = get_token_from_storage(
+            page, settings.token_storage, settings.token_storage_key
+        )
 
         api = MxApi.new(p, token, settings.base_url)
         try:
@@ -35,15 +38,21 @@ def main():
                 username=settings.device_username,
                 password=settings.device_password,
             )
-            out = save_bytes(str(Path("downloads") / f"{settings.device_ip}_api_export.bin"), data)
+            out = save_bytes(
+                str(Path("downloads") / f"{settings.device_ip}_api_export.bin"), data
+            )
             print("API export saved:", out)
 
             ui_out = network.export_config_by_ui("downloads")
             print("UI download saved:", ui_out)
+
+            ui_out = network.import_config_by_ui()
+            print("UI import config:", ui_out)
         finally:
             api.close()
             context.close()
             browser.close()
+
 
 if __name__ == "__main__":
     main()

@@ -15,7 +15,6 @@ class NetworkPage:
 
     def export_config_by_ui(self, download_dir: str) -> str:
         """Click UI controls to export config and save to download_dir."""
-        # NOTE: selectors below are based on your current script and may need adjustment.
         self.page.locator("#device_8").click()
         self.page.locator("#deviceControl").click()
         self.page.locator("//button[.//div[text()=' Export Config ']]").click()
@@ -28,3 +27,14 @@ class NetworkPage:
         save_path = str(Path(download_dir) / download.suggested_filename)
         download.save_as(save_path)
         return save_path
+
+    def import_config_by_ui(self) -> str:
+        self.page.locator("#device_8").click()
+        self.page.locator("#deviceControl").click()
+        self.page.locator("//button[.//div[text()=' Import Config ']]").click()
+        self.page.locator("#input-import-config").set_input_files(
+            "./downloads/192.168.123.151.ini"
+        )
+        self.page.locator("#button-import-config-import").click()
+        result = self.page.locator(".mat-simple-snack-bar-content").text_content()
+        return result
