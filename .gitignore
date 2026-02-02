@@ -1,0 +1,75 @@
+# ===============================
+# Python
+# ===============================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# ===============================
+# pytest
+# ===============================
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ===============================
+# Playwright
+# ===============================
+# Browser binaries (if installed locally)
+.playwright/
+ms-playwright/
+
+# Playwright artifacts (trace / video / screenshots)
+artifacts/
+trace.zip
+
+# ===============================
+# Runtime generated files
+# ===============================
+downloads/
+*.bin
+*.ini
+*.txt
+*.log
+
+# ===============================
+# Environment variables
+# ===============================
+.env
+
+# Keep example file
+!.env.example
+
+# ===============================
+# VSCode
+# ===============================
+.vscode/*
+!.vscode/launch.json
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# ===============================
+# OS
+# ===============================
+.DS_Store
+Thumbs.db
+
+# ===============================
+# Temporary / Debug
+# ===============================
+*.tmp
+*.bak
+*.swp
+*.swo
